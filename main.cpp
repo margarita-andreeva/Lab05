@@ -53,16 +53,16 @@ int main()
 
 	xs.push_back(6);
 	assert(("push_back() should increase size", xs.size() == 6));
-	assert(("push_back() should push back", xs.value_at(5) == 6));
+	assert(("push_back() should push to the back", xs.value_at(5) == 6));
 
 
 	xs.pop_back();
-	assert(("pop_front() should decrease size", xs.size() == 5));
+	assert(("pop_back() should decrease size", xs.size() == 5));
 
 
 	xs.push_front(0);
 	assert(("push_front() should increase size", xs.size() == 6));
-	assert(("push_front() should push front", xs.value_at(0) == 0));
+	assert(("push_front() should push to the front", xs.value_at(0) == 0));
 
 
 	xs.pop_front();
@@ -129,7 +129,7 @@ int main()
 
 	xs.value_at(2) = 42;
 	assert(("modification of original elements should not change copy elements",
-			xs.value_at(2) != zs.value_at(2)));
+	        xs.value_at(2) != zs.value_at(2)));
 	xs.value_at(2) = 3;
 
 
@@ -147,17 +147,17 @@ int main()
 	auto us = xs;
 	us.insert_before(1, 11);
 	assert(("insert_before(1, 11) should insert 11 before element #1",
-			us.value_at(0) == 1 &&
-			us.value_at(1) == 11 &&
-			us.value_at(2) == 2));
+	        us.value_at(0) == 1 &&
+	        us.value_at(1) == 11 &&
+	        us.value_at(2) == 2));
 
 	us.remove_at(1);
 	assert(("remove_at(1) should return `us' back to `xs'", us == xs));
 
 	us.insert_after(4, 55);
 	assert(("insert_after(4, 55) should insert 55 after element #4",
-			us.value_at(4) == 5 &&
-			us.value_at(5) == 55));
+	        us.value_at(4) == 5 &&
+	        us.value_at(5) == 55));
 
 	us.remove_at(5);
 	assert(("remove_at(5) should return `us' back to `xs'", us == xs));
