@@ -67,6 +67,11 @@ void LinkedList::push_front(const Data& value)
 	// TODO
 }
 
+void LinkedList::clear()
+{
+	// TODO
+}
+
 void swap(LinkedList& left, LinkedList& right)
 {
 	// TODO
@@ -78,7 +83,6 @@ LinkedList::LinkedList()
 {
 	// TODO
 }
-
 
 LinkedList::LinkedList(const std::initializer_list<Data> values) :
 	LinkedList()

@@ -132,6 +132,9 @@ int main()
 	        xs.value_at(2) != zs.value_at(2)));
 	xs.value_at(2) = 3;
 
+	zs.clear();
+	assert(("clear() should leave the list empty", zs.size() == 0));
+
 
 	auto function_that_returns_an_object = [&xs]() -> LinkedList
 	{

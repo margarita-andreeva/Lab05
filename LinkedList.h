@@ -34,6 +34,8 @@ public:
 	void pop_back();
 	void pop_front();
 
+	void clear();
+
 	// При некорректном индексе должны возбужадать std::out_of_range.
 	void remove_at(size_t index);
 	void insert_before(size_t index, const Data& value);
