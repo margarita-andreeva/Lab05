@@ -1,3 +1,7 @@
+// main.cpp:
+//    Выполняет тестирование функциональности класса LinkedList.
+//    Не нуждается в редактировании.
+
 // Не выводить в этом файле предупреждения о неиспользуемых результатах
 // вычислений (они не являются проблемой в данном случае).
 #pragma GCC diagnostic ignored "-Wunused-value"
@@ -21,11 +25,11 @@ int main()
 	// включая первое (строку). Это позволяет напечатать описание проверки,
 	// которая выполняется. Сравните:
 	//
-	//	size() == 4   <--- как понять, зачем это проверялось?
+	//    size() == 4   <--- как понять, зачем это проверялось?
 	//
-	//	("pop_front() should decrease size", xs.size() == 4)   <--,
-	//                                                           /
-	//      При чтении понятно: проверялась работа pop_front() -'
+	//    ("pop_front() should decrease size", xs.size() == 4) <----,
+	//                                                             /
+	//      При чтении понятно: проверялась работа pop_front() ---'
 	//
 	assert( ("error message", 2*2 == 4) );
 
@@ -84,7 +88,7 @@ int main()
 	catch (const std::out_of_range&) {
 	}
 	catch (...) {
-		assert(("value_at(666) should raise `out_of_range'", false));
+		assert(("value_at(666) should raise `std::out_of_range'", false));
 	}
 
 
@@ -108,17 +112,17 @@ int main()
 
 	ys.value_at(2) = 42;
 	assert(("modification of a copy elements should not change original elements",
-			xs.value_at(2) != ys.value_at(2)));
+	        xs.value_at(2) != ys.value_at(2)));
 	ys.value_at(2) = 3;
 
 	xs.value_at(2) = 42;
 	assert(("modification of original elements should not change copy elements",
-			xs.value_at(2) != ys.value_at(2)));
+	        xs.value_at(2) != ys.value_at(2)));
 	xs.value_at(2) = 3;
 
 	LinkedList zs;
 	zs = xs;
-	assert(("copy assignxment should produce identical objects", xs == zs));
+	assert(("copy assignment should produce identical objects", xs == zs));
 
 	zs.push_back(7);
 	assert(("push_back() to a copy should not change original", xs != zs));
@@ -128,7 +132,7 @@ int main()
 
 	zs.value_at(2) = 42;
 	assert(("modification of a copy elements should not change original elements",
-			xs.value_at(2) != zs.value_at(2)));
+	        xs.value_at(2) != zs.value_at(2)));
 	zs.value_at(2) = 3;
 
 	xs.value_at(2) = 42;

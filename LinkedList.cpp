@@ -1,7 +1,11 @@
+// LinkedList.cpp:
+//    Содержит реализации методов LinkedList и некоторых функций.
+//    Наибольшая часть лабораторной работы связана с этим файлом.
+
 #include <iostream>     // std::ostream
-#include <stdexcept>	// std::out_of_range
-#include <string>		// std::to_string()
-#include <utility>		// std::swap()
+#include <stdexcept>    // std::out_of_range
+#include <string>       // std::to_string()
+#include <utility>      // std::swap()
 
 #include "LinkedList.h"
 
