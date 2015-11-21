@@ -1,3 +1,7 @@
+// Не выводить в этом файле предупреждения о неиспользуемых результатах
+// вычислений (они не являются проблемой в данном случае).
+#pragma GCC diagnostic ignored "-Wunused-value"
+
 #include <cassert>
 #include <sstream>
 #include <stdexcept>
