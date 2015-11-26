@@ -6,7 +6,9 @@
 // вычислений (они не являются проблемой в данном случае).
 #pragma GCC diagnostic ignored "-Wunused-value"
 
+#include <algorithm>
 #include <cassert>
+#include <iostream>
 #include <sstream>
 #include <stdexcept>
 
@@ -205,6 +207,40 @@ int main()
 	catch (...) {
 		assert(("remove_at(666) should raise `out_of_range'", false));
 	}
+
+
+	// ----------------------------------------------------------------------
+	// Демонстрация работы с итераторами и алгоритмами STL.
+
+	LinkedList ts { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 };
+	std::cout << "List:\t\t" << ts << '\n';
+
+	Data mean = std::accumulate( // Суммирование элементов
+	        ts.begin(),          // от начала списка
+	        ts.end(),            // до конца списка,
+	        0.0);                // начальное значение --- 0.0.
+	mean /= ts.size();
+	std::cout << "Mean:\t\t" << mean << '\n';
+
+	// Вычисление суммы квадратов элементов списка.
+	Data variance = std::accumulate(
+	        ts.begin(), ts.end(), 0.0,
+			// Лямбда-функция, не захватывающая значений.
+			// Ей передается ссылка на накопленную сумму (0, 1, 5, ...)
+			// и значение очередного элемента, квадрат которого она вычисляет.
+			[](double&, Data t){ return t*t; });
+	variance /= ts.size() - 1;
+	std::cout << "Variance:\t" << variance << '\n';
+
+	Data stdev = std::sqrt(variance);
+	std::cout << "St. dev.:\t" << stdev << '\n';
+
+	// Подсчет количества выбросов (отстоящих от среднего на 1,5 и более СКО).
+	// Алгоритм считает, сколько раз лямбда-функция вернет `true'.
+	size_t outlier_count = std::count_if(
+	        ts.begin(), ts.end(),
+	        [mean, stdev](Data t){ return std::abs(t - mean) > 1.5*stdev; });
+	std::cout << "Outlier count:\t" << outlier_count << '\n';
 }
 // В этой точке будут вызваны деструкторы объектов, созданных внутри блока.
 // Если в них есть критические ошибки, программа завершится аварийно.

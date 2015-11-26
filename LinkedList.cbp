@@ -32,6 +32,7 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="LinkedList.Iterator.cpp" />
 		<Unit filename="LinkedList.cpp" />
 		<Unit filename="LinkedList.h" />
 		<Unit filename="main.cpp" />
