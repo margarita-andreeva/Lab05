@@ -9,6 +9,9 @@
 
 #include "LinkedList.h"
 
+using std::swap;  // Чтобы использовать swap() без std::
+
+
 LinkedList& LinkedList::operator=(LinkedList rhs)
 {
 	// TODO
