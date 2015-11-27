@@ -59,6 +59,7 @@ int main()
 	buffer << xs;
 	assert(("{1,2,3,4,5} as string", buffer.str() == "[1, 2, 3, 4, 5]"));
 
+
 	xs.push_back(6);
 	assert(("push_back() should increase size", xs.size() == 6));
 	assert(("push_back() should push to the back", xs.value_at(5) == 6));
@@ -78,17 +79,18 @@ int main()
 
 
 	try {
-		xs.value_at(666);
+		xs.value_at(xs.size());
 		// Если предыдущая строка приведет к возбуждению исключения
 		// (как и должно быть), следующая строка не выполнится.
 		// Если же она выполнится, assert() всегда сработает,
 		// потому что его условие всегда ложно (false).
-		assert(("value_at(666) should raise exception", false));
+		assert(("value_at(size() and above) should raise exception", false));
 	}
 	catch (const std::out_of_range&) {
 	}
 	catch (...) {
-		assert(("value_at(666) should raise `std::out_of_range'", false));
+		assert(("value_at(size() and above) should raise `std::out_of_range'",
+		        false));
 	}
 
 
