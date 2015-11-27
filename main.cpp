@@ -157,6 +157,7 @@ int main()
 
 	auto us = xs;
 	us.insert_before(1, 11);
+	assert(("insert_before() should increase size() by 1", us.size() == xs.size() + 1));
 	assert(("insert_before(1, 11) should insert 11 before element #1",
 	        us.value_at(0) == 1 &&
 	        us.value_at(1) == 11 &&
@@ -166,6 +167,7 @@ int main()
 	assert(("remove_at(1) should return `us' back to `xs'", us == xs));
 
 	us.insert_after(4, 55);
+	assert(("insert_after() should increase size() by 1", us.size() == xs.size() + 1));
 	assert(("insert_after(4, 55) should insert 55 after element #4",
 	        us.value_at(4) == 5 &&
 	        us.value_at(5) == 55));
