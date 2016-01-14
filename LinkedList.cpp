@@ -11,24 +11,63 @@
 
 using std::swap;  // Чтобы использовать swap() без std::
 
+int LinkedList::findmax() {
+    Node* ptr = head->next;
+
+    int index = 1;
+    int max_at = 0;
+    Data max = head->value;
+
+    while(ptr != nullptr) {
+        if(ptr->value > max)
+        {
+            max_at = index;
+            max = ptr->value;
+        }
+        index++;
+        ptr = ptr->next;
+    }
+    return max_at;
+}
+
+void LinkedList::sort() {
+   LinkedList sorted;
+   while(size() > 0) {
+    int maxn = findmax();
+    sorted.push_front(value_at(maxn));
+    remove_at(maxn);
+   }
+   *this = sorted;
+}
+
+void LinkedList::reverse() {
+    LinkedList reversed;
+    while(size() > 0) {
+        reversed.push_front(value_at(0));
+        pop_front();
+    }
+
+    *this = reversed;
+}
 
 LinkedList& LinkedList::operator=(LinkedList rhs)
 {
-	clear();
+	/*clear();
 
 	Node *ptr = rhs.head;
 
 	while (ptr != nullptr) {
         push_back(ptr->value);
         ptr = ptr->next;
-	}
+	}*/
+	swap(this->head, rhs.head);
 
 	return *this;
 }
 
 LinkedList& LinkedList::operator=(LinkedList&& rhs)
 {
-	// TODO
+	swap(this->head, rhs.head);
 	return *this;
 }
 

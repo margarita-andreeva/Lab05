@@ -9,6 +9,7 @@
 #include <cassert>
 #include <sstream>
 #include <stdexcept>
+#include <iostream>
 
 #include "LinkedList.h"
 
@@ -209,6 +210,35 @@ int main()
 	catch (...) {
 		assert(("remove_at(666) should raise `out_of_range'", false));
 	}
+
+
+    LinkedList sorted;
+
+	LinkedList l1({5,-10,20,30,-500,-6,501});
+	LinkedList l2({1,2,3,4,5,6,-10});
+
+	LinkedList l1sorted({-500,-10,-6,5,20,30,501});
+	LinkedList l2sorted({-10, 1,2,3,4,5,6});
+
+	sorted = l1;
+	sorted.sort();
+	assert(("l1 sorted incorrectly", sorted == l1sorted));
+	sorted = l2;
+	sorted.sort();
+	assert(("l2 sorted incorrectly", sorted == l2sorted));
+
+    LinkedList reversed;
+	LinkedList l2reversed({-10, 6, 5, 4, 3, 2, 1});
+	reversed = l2;
+	reversed.reverse();
+
+	LinkedList l3({5,6,-10});
+	reversed = l3;
+	reversed.reverse();
+	LinkedList l3reversed({-10,6,5});
+
+	assert(("l2 reversed incorrectly", reversed == l3reversed));
+
 }
 // В этой точке будут вызваны деструкторы объектов, созданных внутри блока.
 // Если в них есть критические ошибки, программа завершится аварийно.

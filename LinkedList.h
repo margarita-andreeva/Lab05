@@ -49,6 +49,9 @@ public:
 	bool operator==(const LinkedList& other) const;
 	bool operator!=(const LinkedList& other) const;
 
+	void sort();
+	void reverse();
+
 private:
 	struct Node
 	{
@@ -67,6 +70,8 @@ private:
 
 	// Удаляет узел по указателю на него.
 	void erase(const Node* node);
+
+	int findmax();
 
 private:
 	// TODO: нужно объявить данные-члены (поля) LinkedList.
