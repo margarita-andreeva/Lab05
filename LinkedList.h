@@ -52,7 +52,8 @@ public:
 private:
 	struct Node
 	{
-		// TODO: нужно самостоятельно определить структуру узла Node.
+		Data value;
+		Node *next;
 	};
 
 private:
@@ -69,4 +70,6 @@ private:
 
 private:
 	// TODO: нужно объявить данные-члены (поля) LinkedList.
+
+	Node *head;
 };
